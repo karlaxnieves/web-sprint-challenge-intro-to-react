@@ -3,9 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 
 
-
-export default function Character(props) {
-    const { nameId, close } = props
+export default function Details() {
     const [details, setDetails] = useState(null)
 
     useEffect(() => {
@@ -14,16 +12,19 @@ export default function Character(props) {
             .catch(err => {
                 console.log(err);
             })
-    }, [nameId])
+    }, [])
 
     return (
+
         <div className='container'>
-            <h2>Details:</h2>
+            <h2>Who is Luke:</h2>
             {
                 details &&
                 <>
-                    <p>{details.name} is {details.age}</p>
-                    <p>Height is {details.height}</p>
+                    <p>{details.name} was born in {details.birth_year}</p>
+                    <p>His height is {details.height}</p>
+                    <p>Eye Color: {details.eye_color}</p>
+                    <p>Hair Color: {details.hair_color}</p>
                 </>
             }
 
