@@ -5,15 +5,15 @@ import Character from './components/Character'
 
 const App = () => {
   const [data, setData] = useState({})
-  const [currentCharacter, setCurrentCharacter] = useState('1')
+  // const [currentCharacter, setCurrentCharacter] = useState('')
 
-  const openDetails = name => {
-    setCurrentCharacter(name)
-  }
+  // const openDetails = name => {
+  //   setCurrentCharacter(name)
+  // }
 
-  const closeDetails = () => {
-    setCurrentCharacter(null)
-  }
+  // const closeDetails = () => {
+  //   setCurrentCharacter(null)
+  // }
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
 
@@ -36,17 +36,12 @@ const App = () => {
     <div className="App">
       <h1 className="Header">Characters</h1>
 
-
-
       {Object.keys(data).map(key => (
         <div key={key}>{data[key].name}</div>
       ))
       }
 
-
-
-      <Character height={data.height} />
-
+      <Character />
     </div>
   );
 }
