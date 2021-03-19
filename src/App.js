@@ -1,11 +1,11 @@
 import axios from 'axios';
-import React, { useState, iseEffect, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Character from './components/Character'
 
 const App = () => {
   const [data, setData] = useState({})
-  const [currentCharacter, setCurrentCharacter] = useState('')
+  const [currentCharacter, setCurrentCharacter] = useState('1')
 
   const openDetails = name => {
     setCurrentCharacter(name)
@@ -35,12 +35,22 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
+
+
+
       {Object.keys(data).map(key => (
-        <li key={key}>{data[key].name}</li>
+        <div key={key}>{data[key].name}</div>
       ))
       }
+
+
+
+      <Character height={data.height} />
+
     </div>
   );
 }
+
+
 
 export default App;
