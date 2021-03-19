@@ -1,10 +1,27 @@
 // Write your Character component here
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
+import styled from 'styled-components'
 
 
-export default function Details() {
-    const [details, setDetails] = useState(null)
+
+const H2 = styled.h2`
+&:hover {
+    transform: scale(3);
+    transition: all 0.2s ease-in-out;
+  }
+  transition: all 2s ease-in-out;
+  color: #D3D3D3;
+`
+
+const Paragraph = styled.div`
+color: white;
+font-size: 1.2em;
+`
+
+export default function Character() {
+
+    const [details, setDetails] = useState('')
 
     useEffect(() => {
         axios.get("https://swapi.dev/api/people/1/")
@@ -16,16 +33,16 @@ export default function Details() {
 
     return (
 
-        <div className='container'>
-            <h2>Who is Luke:</h2>
+        <div>
+            <H2>Who is Luke:</H2>
             {
                 details &&
-                <>
+                <Paragraph>
                     <p>{details.name} was born in {details.birth_year}</p>
                     <p>His height is {details.height}</p>
                     <p>Eye Color: {details.eye_color}</p>
                     <p>Hair Color: {details.hair_color}</p>
-                </>
+                </Paragraph>
             }
 
         </div>

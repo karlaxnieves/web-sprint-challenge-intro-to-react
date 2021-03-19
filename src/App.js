@@ -8,19 +8,17 @@ import styled from 'styled-components'
 const H1List = styled.h1`
   color: #feda4a;
   font-size: 5em;
-  font-family: 'Pathway Gothic One', sans-serif;
   letter-spacing: 4px;
+  &:hover {
+    color: orange;
   `
 
 const ListDiv = styled.div`
-  
-  boder: 5% solid black;
-  width: 20%;
+  font-size: 1.6em;
   padding: 0.5%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  opacity: 0.8;
+  font-weight: bold;
+  background-color: orange;
+  opacity: 0.5;
   
 `
 
@@ -48,6 +46,8 @@ const App = () => {
   return (
     <div className="App">
       <H1List className="Header">Characters</H1List>
+
+
 
       {Object.keys(data).map(key => (
         <ListDiv key={key}>{data[key].name}</ListDiv>
