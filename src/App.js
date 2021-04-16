@@ -4,6 +4,23 @@ import './App.css';
 import Character from './components/Character'
 import styled from 'styled-components'
 
+const H1List = styled.h1`
+  color: #feda4a;
+  font-size: 5em;
+  letter-spacing: 4px;
+  &:hover {
+    color: orange;
+  `
+
+const ListDiv = styled.div`
+  font-size: 1.6em;
+  padding: 0.5%;
+  font-weight: bold;
+  background-color: orange;
+  opacity: 0.5;
+  
+`
+
 const App = () => {
   const [data, setData] = useState({})
   const [currentCharacterId, setCurrentCharacterId] = useState(null)
@@ -36,15 +53,15 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1 className="Header">Characters</h1>
+      <H1List className="Header">Characters</H1List>
 
       {Object.keys(data).map(char => (
-        <div
+        <ListDiv
           key={char.name}
           info={char}
           action={openDetails}>
           {data[char].name}
-        </div>
+        </ListDiv>
       ))
       }
 
