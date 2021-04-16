@@ -33,6 +33,7 @@ const App = () => {
   }, [])
 
 
+
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
@@ -40,7 +41,8 @@ const App = () => {
       {Object.keys(data).map(char => (
         <div
           key={char.name}
-          info={char}>
+          info={char}
+          action={openDetails}>
           {data[char].name}
         </div>
       ))

@@ -9,12 +9,12 @@ export default function Character({ charactersId, close }) {
 
 
     useEffect(() => {
-        axios.get("https://swapi.dev/api/people/")
+        axios.get(`https://swapi.dev/api/people/1/`)
             .then(res => { setDetails(res.data) })
             .catch(err => {
                 console.log(err);
             })
-    }, [])
+    }, [charactersId])
 
     return (
 
