@@ -33,16 +33,25 @@ const App = () => {
   }, [])
 
 
-
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
 
-      {Object.keys(data).map(key => (
-        <Character key={key}>{data[key].name}</Character>
+      {Object.keys(data).map(char => (
+        <div
+          key={char.name}
+          info={char}>
+          {data[char].name}
+        </div>
       ))
       }
 
+
+      {
+        <Character
+          charactersId={currentCharacterId}
+          close={closeDetails} />
+      }
     </div>
   );
 }

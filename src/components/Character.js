@@ -4,11 +4,12 @@ import axios from 'axios'
 import styled from 'styled-components'
 
 
-export default function Character({ characters }) {
+export default function Character({ charactersId, close }) {
     const [details, setDetails] = useState('')
 
+
     useEffect(() => {
-        axios.get("https://swapi.dev/api/people/1/")
+        axios.get("https://swapi.dev/api/people/")
             .then(res => { setDetails(res.data) })
             .catch(err => {
                 console.log(err);
@@ -18,7 +19,7 @@ export default function Character({ characters }) {
     return (
 
         <div>
-            <h2>Who is Luke:</h2>
+            <h2>Who is {details.name}</h2>
             {
                 details &&
                 <div>
@@ -28,7 +29,7 @@ export default function Character({ characters }) {
                     <p>Hair Color: {details.hair_color}</p>
                 </div>
             }
-
+            <button onClick={close}>Close</button>
         </div>
     )
 }
