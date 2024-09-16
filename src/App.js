@@ -1,7 +1,29 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import Character from './components/Character'
+import styled from 'styled-components'
+
+const H1List = styled.h1`
+  color: #feda4a;
+  font-size: 5em;
+  letter-spacing: 4px;
+  &:hover {
+    color: orange;
+  `
+
+const ListDiv = styled.div`
+  font-size: 1.6em;
+  padding: 0.5%;
+  font-weight: bold;
+  background-color: orange;
+  opacity: 0.5;
+  
+`
 
 const App = () => {
+  const [data, setData] = useState({})
+  const [currentCharacterId, setCurrentCharacterId] = useState(null)
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
 
@@ -9,9 +31,46 @@ const App = () => {
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
 
+  const openDetails = name => {
+    setCurrentCharacterId(name)
+  }
+
+  const closeDetails = () => {
+    setCurrentCharacterId(null)
+  }
+
+  useEffect(() => {
+    axios.get("https://swapi.dev/api/people/")
+      .then((res) => {
+        setData(res.data)
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }, [])
+
+
+
   return (
     <div className="App">
-      <h1 className="Header">Characters</h1>
+      <H1List className="Header">Characters</H1List>
+
+      {Object.keys(data).map(char => (
+        <ListDiv
+          key={char.name}
+          info={char}
+          action={openDetails}>
+          {data[char].name}
+        </ListDiv>
+      ))
+      }
+
+
+      {
+        <Character
+          charactersId={currentCharacterId}
+          close={closeDetails} />
+      }
     </div>
   );
 }
